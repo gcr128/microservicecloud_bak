@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atguigu.springcloud.dao.DeptDao" >
+
+    <!-- 根据用户的id userId 查询用户信息 -->
+    <insert id="addDept" parameterType="Dept">
+        insert into dept(dname,db_source) VALUES (#{dname},DATABASE());
+    </insert>
+
+    <!-- 查询所有用户 -->
+    <select id="findById" resultType="Dept" parameterType="Long">
+        select
+        deptno as deptno,
+        dname as dname,
+        db_source as db_source
+        from dept
+        where deptno = #{deptno}
+    </select>
+
+    <!-- 根据用户的id 查询用户信息 -->
+    <select id="findAll" resultType="Dept" >
+        select
+        deptno as deptno,
+        dname as dname,
+        db_source as db_source
+        from dept
+    </select>
+
+
+</mapper>
